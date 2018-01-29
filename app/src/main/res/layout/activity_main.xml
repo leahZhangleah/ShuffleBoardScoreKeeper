@@ -26,7 +26,6 @@
             android:orientation="vertical">
 
             <TextView
-                android:id = "@+id/home_team_name"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@android:color/holo_red_light"
@@ -64,7 +63,6 @@
             android:orientation="vertical">
 
             <TextView
-                android:id = "@+id/guest_team_name"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@android:color/holo_blue_light"
@@ -105,12 +103,15 @@
             android:gravity="center"
             android:text="Takedown(2 points)"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
-        <include layout = "@layout/activity_button_view_layout"
-            android:id = "@+id/takedown_view"
-            android:layout_height="match_parent"
+        <fragment
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:id="@+id/takedown_fragment"
+            android:name="com.example.android.shuffleboardscorekeeper.ButtonViewLayout"
             android:layout_width="match_parent"
-            android:padding="10dp"
-            />
+            android:layout_height="wrap_content" />
+
+
     </LinearLayout>
 
     <LinearLayout
@@ -125,11 +126,14 @@
             android:text="Escape(1 point)"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
-        <include layout = "@layout/activity_button_view_layout"
-            android:layout_height="match_parent"
+        <fragment
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:id="@+id/escape_fragment"
+            android:name="com.example.android.shuffleboardscorekeeper.ButtonViewLayout"
             android:layout_width="match_parent"
-            android:padding="10dp"
-            android:id = "@+id/escape_view" />
+            android:layout_height="wrap_content" />
+
 
     </LinearLayout>
     <LinearLayout
@@ -144,11 +148,14 @@
             android:text="Reversal(2 points)"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
-        <include layout = "@layout/activity_button_view_layout"
-            android:layout_height="match_parent"
+        <fragment
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:id="@+id/reversal_fragment"
+            android:name="com.example.android.shuffleboardscorekeeper.ButtonViewLayout"
             android:layout_width="match_parent"
-            android:padding="10dp"
-            android:id = "@+id/reversal_view"/>
+            android:layout_height="wrap_content" />
+
 
     </LinearLayout>
     <LinearLayout
@@ -163,11 +170,14 @@
             android:text="Nearfall(2 points)"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
-        <include layout = "@layout/activity_button_view_layout"
-            android:layout_height="match_parent"
+        <fragment
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:id="@+id/nearfall_fragment"
+            android:name="com.example.android.shuffleboardscorekeeper.ButtonViewLayout"
             android:layout_width="match_parent"
-            android:padding="10dp"
-            android:id = "@+id/nearfall_view"/>
+            android:layout_height="wrap_content" />
+
 
     </LinearLayout>
 
@@ -175,8 +185,8 @@
     <TableLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
         android:layout_marginTop="10dp">
 
         <TableRow
@@ -184,14 +194,12 @@
             android:layout_height="match_parent" >
 
             <TextView
-
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:background="@drawable/textview_bg_transparent"/>
 
             <TextView
-                android:id="@+id/textViewR1"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
@@ -200,7 +208,6 @@
                 android:background="@drawable/textview_bg_transparent"/>
 
             <TextView
-                android:id="@+id/textViewR2"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
@@ -209,7 +216,6 @@
                 android:background="@drawable/textview_bg_transparent"/>
 
             <TextView
-                android:id="@+id/textViewR3"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
@@ -223,7 +229,6 @@
             android:layout_height="match_parent" >
 
             <TextView
-                android:id="@+id/textViewHome"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
@@ -233,7 +238,7 @@
                 android:background="@drawable/textview_bg_transparent"/>
 
             <TextView
-                android:id="@+id/textViewHomeR1"
+                android:id="@+id/home_score_R1"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
@@ -241,7 +246,7 @@
                 android:background="@drawable/textview_bg_transparent"/>
 
             <TextView
-                android:id="@+id/textViewHomeR2"
+                android:id="@+id/home_score_R2"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
@@ -249,7 +254,7 @@
                 android:background="@drawable/textview_bg_transparent"/>
 
             <TextView
-                android:id="@+id/textViewHomeR3"
+                android:id="@+id/home_score_R3"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
@@ -263,7 +268,6 @@
             android:layout_height="match_parent" >
 
             <TextView
-                android:id="@+id/textViewGuest"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
@@ -273,7 +277,7 @@
                 android:background="@drawable/textview_bg_transparent"/>
 
             <TextView
-                android:id="@+id/textViewGuestR1"
+                android:id="@+id/guest_score_R1"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
@@ -281,7 +285,7 @@
                 android:background="@drawable/textview_bg_transparent"/>
 
             <TextView
-                android:id="@+id/textViewGuestR2"
+                android:id="@+id/guest_score_R2"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
@@ -289,7 +293,7 @@
                 android:background="@drawable/textview_bg_transparent"/>
 
             <TextView
-                android:id="@+id/textViewGuestR3"
+                android:id="@+id/guest_score_R3"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
@@ -300,6 +304,7 @@
     </TableLayout>
 
     <Button
+        android:id="@+id/reset_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="120dp"
