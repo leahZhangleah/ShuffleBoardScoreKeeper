@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/title_background"
+        android:layout_width="match_parent"
+        android:layout_height="100dp">
+
+        <ImageView
+            android:id="@+id/satisfied_smile"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_sentiment_satisfied_black_24dp"
+            android:tint="@android:color/white" />
+    </RelativeLayout>
+
+
+
+    <TextView
+        android:id="@+id/winning_team"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="16dp"
+        android:text="@string/win_team_a"
+        android:textSize="30sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:text="@string/alert_message"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:gravity="center"/>
+    <LinearLayout
+        android:layout_marginTop="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <Button
+            android:id="@+id/no_button"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_height="wrap_content"
+            android:text="No"
+            android:background="@android:color/white"
+            android:textColor="@android:color/black"/>
+        <Button
+            android:id="@+id/yes_button"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_height="wrap_content"
+            android:text="Yes"
+            android:background="@android:color/white"
+            android:textColor="@android:color/black"/>
+    </LinearLayout>
+
+
+</LinearLayout>

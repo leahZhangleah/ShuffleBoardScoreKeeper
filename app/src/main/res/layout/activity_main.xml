@@ -109,7 +109,8 @@
             android:id="@+id/takedown_fragment"
             android:name="com.example.android.shuffleboardscorekeeper.ButtonViewLayout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            tools:layout = "@layout/activity_button_view_layout"/>
 
 
     </LinearLayout>
@@ -132,7 +133,8 @@
             android:id="@+id/escape_fragment"
             android:name="com.example.android.shuffleboardscorekeeper.ButtonViewLayout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            tools:layout = "@layout/activity_button_view_layout"/>
 
 
     </LinearLayout>
@@ -154,7 +156,8 @@
             android:id="@+id/reversal_fragment"
             android:name="com.example.android.shuffleboardscorekeeper.ButtonViewLayout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            tools:layout = "@layout/activity_button_view_layout"/>
 
 
     </LinearLayout>
@@ -176,7 +179,8 @@
             android:id="@+id/nearfall_fragment"
             android:name="com.example.android.shuffleboardscorekeeper.ButtonViewLayout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            tools:layout = "@layout/activity_button_view_layout"/>
 
 
     </LinearLayout>

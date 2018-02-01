@@ -57,11 +57,6 @@ public class ButtonViewLayout extends Fragment {
         homeTextView = (TextView)buttonView.findViewById(R.id.home_team_number);
         guestTextView = (TextView) buttonView.findViewById(R.id.guest_team_number);
 
-        //check if main acitivity reset button is clicked
-       /* buttonIsClciked = getArguments().getBoolean("reset_button_clicked");
-        resetScore(buttonIsClciked);*/
-
-
         homeDecrement.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

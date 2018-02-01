@@ -1,5 +1,6 @@
 package com.example.android.shuffleboardscorekeeper;
 
+import android.app.AlertDialog;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.app.Presentation;
@@ -14,7 +15,7 @@ import android.widget.FrameLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements MyDialogFragment.DialogClickListener{
     //define four fragments
     private ButtonViewLayout takeDownFragment;
     private ButtonViewLayout escapeFragment;
@@ -60,37 +61,29 @@ public class MainActivity extends AppCompatActivity {
 
     boolean buttonIsClicked = false;
 
+    //calculate which team wins
+    private int homeWins = 0;
+    private int guestWins = 0;
+
+    String messageToAlert;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //define two text views of home and guest scores
-        homeTsView = (TextView) findViewById(R.id.home_total_score);
-        guestTsView = (TextView) findViewById(R.id.guest_total_score);
+        fragmentClickListener();
+        onButtonClickListener();
 
+    }
+    //fragment click listener
+    public void fragmentClickListener(){
         //add 4 fragments to main_activity
         takeDownFragment = (ButtonViewLayout) getFragmentManager().findFragmentById(R.id.takedown_fragment);
         escapeFragment = (ButtonViewLayout) getFragmentManager().findFragmentById(R.id.escape_fragment);
         reversalFragment = (ButtonViewLayout) getFragmentManager().findFragmentById(R.id.reversal_fragment);
         nearfallFragment = (ButtonViewLayout) getFragmentManager().findFragmentById(R.id.nearfall_fragment);
-
-        fragmentArray[0] = takeDownFragment;
-        fragmentArray[1] = escapeFragment;
-        fragmentArray[2] = reversalFragment;
-        fragmentArray[3] = nearfallFragment;
-
-                //add 1 reset button
-        resetButton = (Button) findViewById(R.id.reset_button);
-
-        //define score table views
-        homeScoreR1 = (TextView) findViewById(R.id.home_score_R1);
-        guestScoreR1 = (TextView) findViewById(R.id.guest_score_R1);
-        homeScoreR2 = (TextView) findViewById(R.id.home_score_R2);
-        guestScoreR2 = (TextView) findViewById(R.id.guest_score_R2);
-        homeScoreR3 = (TextView) findViewById(R.id.home_score_R3);
-        guestScoreR3 = (TextView) findViewById(R.id.guest_score_R3);
 
         //setListener for each fragment to catch score change
         takeDownFragment.setListener( new ButtonViewLayout.ButtonViewLayoutListener() {
@@ -129,6 +122,29 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+
+    //reset button click listener
+    public void onButtonClickListener(){
+        //add 1 reset button
+        resetButton = (Button) findViewById(R.id.reset_button);
+
+        //add table views
+        //define score table views
+        homeScoreR1 = (TextView) findViewById(R.id.home_score_R1);
+        guestScoreR1 = (TextView) findViewById(R.id.guest_score_R1);
+        homeScoreR2 = (TextView) findViewById(R.id.home_score_R2);
+        guestScoreR2 = (TextView) findViewById(R.id.guest_score_R2);
+        homeScoreR3 = (TextView) findViewById(R.id.home_score_R3);
+        guestScoreR3 = (TextView) findViewById(R.id.guest_score_R3);
+
+        //fragment array
+        fragmentArray[0] = takeDownFragment;
+        fragmentArray[1] = escapeFragment;
+        fragmentArray[2] = reversalFragment;
+        fragmentArray[3] = nearfallFragment;
+
         resetButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -136,58 +152,66 @@ public class MainActivity extends AppCompatActivity {
                 if (currentClickNumber <= maxClick) {
                     switch (currentClickNumber) {
                         case 1:
-                            updateScoreTable(homeScoreR1, guestScoreR1);
-                            updateTotalScore();
-                            updateFragmentNumber(fragmentArray,buttonIsClicked);
-                            buttonIsClicked = false;
-                            currentClickNumber += 1;
+                            resetButtonIsClicked(homeScoreR1,guestScoreR1);
                             break;
                         case 2:
-                            updateScoreTable(homeScoreR2, guestScoreR2);
-                            updateTotalScore();
-                            updateFragmentNumber(fragmentArray,buttonIsClicked);
-                            buttonIsClicked = false;
-                            currentClickNumber += 1;
+                            resetButtonIsClicked(homeScoreR2,guestScoreR2);
                             break;
                         case 3:
-                            updateScoreTable(homeScoreR3, guestScoreR3);
-                            updateTotalScore();
-                            updateFragmentNumber(fragmentArray,buttonIsClicked);
-                            buttonIsClicked = false;
-                            currentClickNumber += 1;
+                            resetButtonIsClicked(homeScoreR3,guestScoreR3);
                             break;
                     }
                 } else {
-                    resetButton.setEnabled(false);
+                    currentClickNumber = 1;
+                    whoWins();
+                    showDialog(messageToAlert);
                     Toast.makeText(MainActivity.this, "Game over", Toast.LENGTH_SHORT).show();
                 }
             }
         });
-
-
     }
 
     //helper methods
+    //update each team's total score
     private void updateScoreView(){
+        //define two text views of home and guest scores
+        homeTsView = (TextView) findViewById(R.id.home_total_score);
+        guestTsView = (TextView) findViewById(R.id.guest_total_score);
+
         homeTotalScore =tdHomeScore + esHomeScore + rvHomeScore + nfHomeScore;
         guestTotalScore = tdGuestScore + esGuestScore + rvGuestScore + nfGuestScore;
         homeTsView.setText(String.valueOf(homeTotalScore));
         guestTsView.setText(String.valueOf(guestTotalScore));
     }
 
+    //record each round's total score for each team
     private void updateScoreTable(TextView home, TextView guest){
         home.setText(String.valueOf(homeTotalScore));
         guest.setText(String.valueOf(guestTotalScore));
     }
 
+    //reset main activity total score to 0
     private void updateTotalScore(){
+        if (homeTotalScore > guestTotalScore){
+            homeWins += 1;
+        } else if (homeTotalScore < guestTotalScore){
+            guestWins += 1;
+        }
         homeTotalScore = 0;
         guestTotalScore = 0;
+        tdHomeScore = 0;
+        tdGuestScore = 0;
+        esHomeScore = 0;
+        esGuestScore = 0;
+        rvHomeScore = 0;
+        rvGuestScore = 0;
+        nfHomeScore = 0;
+        nfGuestScore = 0;
         homeTsView.setText(String.valueOf(homeTotalScore));
         guestTsView.setText(String.valueOf(guestTotalScore));
     }
 
-    //todo
+    //reset fragment score to 0
    private void updateFragmentNumber(ButtonViewLayout[] fragmentArray, boolean buttonIsClicked){
         if (buttonIsClicked) {
             for (ButtonViewLayout fragment : fragmentArray) {
@@ -196,9 +220,42 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    //helper method for reset button
+    private void resetButtonIsClicked(TextView homeScoreR, TextView guestScoreR){
+        updateFragmentNumber(fragmentArray,buttonIsClicked);
+        updateScoreTable(homeScoreR, guestScoreR);
+        updateTotalScore();
+        buttonIsClicked = false;
+        currentClickNumber += 1;
+    }
 
+    public void showDialog(String messageToAlert){
+        MyDialogFragment myDialogFragment = MyDialogFragment.newInstance(messageToAlert);
+        myDialogFragment.show(getFragmentManager(),"game_over");
+    }
 
+    //reset every view to start a new game
+    @Override
+    public void yesButtonClicked() {
+        TextView[] scoreRoundArray = {homeScoreR1,homeScoreR2,homeScoreR3,guestScoreR1,guestScoreR2,guestScoreR3};
+        cleanUpTableView(scoreRoundArray);
+    }
 
+    //who wins the game after 3 rounds
+    private void whoWins(){
+        if (homeWins < guestWins){
+            messageToAlert = "Guest Team";
+        }else if (homeWins > guestWins){
+            messageToAlert = "Home Team";
+        }else if (homeWins == guestWins){
+            messageToAlert = "It's a tie";
+        }
+    }
 
+    private void cleanUpTableView(TextView[] scoreRoundArray){
+        for (TextView scoreRound:scoreRoundArray){
+            scoreRound.setText("0");
+        }
+    }
 
 }
