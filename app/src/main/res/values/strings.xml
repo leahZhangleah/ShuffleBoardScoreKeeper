@@ -1,9 +1,15 @@
 <resources>
-    <string name="app_name">ShuffleBoardScoreKeeper</string>
+    <string name="app_name">Wrestling Score Keeper</string>
     <string name="red">Home</string>
     <string name="blue">Guest</string>
     <string name="reset">Reset</string>
     <string name="win_team_a">Home Team</string>
     <string name="win_team_b">Guest Team</string>
     <string name="alert_message">You have just won the game! Do you want to start a new game?</string>
+    <string name="no">NO</string>
+    <string name="yes">YES</string>
+    <string name="first_score_act">Takedown(2 points)</string>
+    <string name="second_score_act">Escape(1 point)</string>
+    <string name="third_score_act">Reversal(2 points)</string>
+    <string name="fourth_score_act">Nearfall(2 points)</string>
 </resources>

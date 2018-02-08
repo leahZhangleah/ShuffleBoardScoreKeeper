@@ -9,7 +9,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Wrestling Score Kepper"
+        android:text="@string/app_name"
         android:gravity="center"
         android:textSize="25sp"/>
     <LinearLayout
@@ -29,7 +29,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@android:color/holo_red_light"
-                android:text="Home"
+                android:text="@string/red"
                 android:textColor="@android:color/white"
                 android:textSize="30sp"
                 android:gravity="center"
@@ -43,7 +43,7 @@
                 android:layout_height="match_parent"
                 android:background="@android:color/white"
                 android:text="0"
-                android:textSize="60sp"
+                android:textSize="40sp"
                 android:gravity="center"
                 android:layout_marginLeft="30dp"
                 android:layout_marginRight="30dp" />
@@ -66,7 +66,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@android:color/holo_blue_light"
-                android:text="Guest"
+                android:text="@string/blue"
                 android:textColor="@android:color/white"
                 android:textSize="30sp"
                 android:gravity="center"
@@ -80,7 +80,7 @@
                 android:layout_height="match_parent"
                 android:background="@android:color/white"
                 android:text="0"
-                android:textSize="60sp"
+                android:textSize="40sp"
                 android:gravity="center"
                 android:layout_marginLeft="30dp"
                 android:layout_marginRight="30dp" />
@@ -94,15 +94,17 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_marginTop="10dp">
+        android:orientation="vertical">
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="Takedown(2 points)"
-            android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+            android:text="@string/first_score_act"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            android:textSize="20sp"
+            android:layout_marginBottom="2dp"
+            android:layout_marginTop="2dp"/>
         <fragment
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
@@ -124,8 +126,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="Escape(1 point)"
-            android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+            android:text="@string/second_score_act"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            android:textSize="20sp"
+            android:layout_marginBottom="2dp"
+            android:layout_marginTop="2dp"/>
 
         <fragment
             android:layout_marginLeft="16dp"
@@ -147,8 +152,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="Reversal(2 points)"
-            android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+            android:text="@string/third_score_act"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            android:textSize="20sp"
+            android:layout_marginBottom="2dp"
+            android:layout_marginTop="2dp"/>
 
         <fragment
             android:layout_marginLeft="16dp"
@@ -170,8 +178,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="Nearfall(2 points)"
-            android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+            android:text="@string/fourth_score_act"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            android:textSize="20sp"
+            android:layout_marginBottom="2dp"
+            android:layout_marginTop="2dp"/>
 
         <fragment
             android:layout_marginLeft="16dp"

@@ -45,15 +45,17 @@
         android:layout_marginTop="16dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        >
         <Button
             android:id="@+id/no_button"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
+            android:layout_marginBottom="16dp"
             android:layout_height="wrap_content"
-            android:text="No"
+            android:text="@string/no"
             android:background="@android:color/white"
             android:textColor="@android:color/black"/>
         <Button
@@ -62,8 +64,9 @@
             android:layout_weight="1"
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
+            android:layout_marginBottom="16dp"
             android:layout_height="wrap_content"
-            android:text="Yes"
+            android:text="@string/yes"
             android:background="@android:color/white"
             android:textColor="@android:color/black"/>
     </LinearLayout>
